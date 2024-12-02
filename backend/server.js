@@ -13,8 +13,8 @@ const port = process.env.PORT || 5000;
 
 // List of allowed origins
 const allowedOrigins = [
-
-  'https://frontend-ciagacfte-steven-waines-projects.vercel.app'
+  'https://frontend-ciagacfte-steven-waines-projects.vercel.app',
+  'https://frontend-hcc1dvs37-steven-waines-projects.vercel.app'
 ];
 
 // Use CORS middleware with dynamic origin
@@ -33,7 +33,13 @@ app.use(cors({
 app.use(express.json());
 
 // Parse the service account key from the environment variable
-const serviceAccountKey = JSON.parse(process.env.GCLOUD_KEY);
+let serviceAccountKey;
+try {
+  serviceAccountKey = JSON.parse(process.env.GCLOUD_KEY);
+} catch (error) {
+  console.error('Failed to parse GCLOUD_KEY:', error);
+  process.exit(1); // Exit the process with an error code
+}
 
 // Configure Google Cloud Storage
 const storage = new Storage({
