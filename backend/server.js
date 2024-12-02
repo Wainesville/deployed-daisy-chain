@@ -13,8 +13,8 @@ const port = process.env.PORT || 5000;
 
 // List of allowed origins
 const allowedOrigins = [
-  'https://frontend-70v5vmwct-steven-waines-projects.vercel.app',
-  'https://frontend-hcc1dvs37-steven-waines-projects.vercel.app'
+
+  'https://frontend-ciagacfte-steven-waines-projects.vercel.app'
 ];
 
 // Use CORS middleware with dynamic origin
