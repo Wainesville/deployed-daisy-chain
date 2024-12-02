@@ -7,9 +7,15 @@ require('dotenv').config();
 console.log('Type of authenticate:', typeof authenticate); // Add this line
 
 const app = express();
-const port = 5000;
+const port = process.env.PORT || 5000;
 
-app.use(cors());
+// Use CORS middleware
+app.use(cors({
+  origin: 'https://frontend-70v5vmwct-steven-waines-projects.vercel.app', // Replace with your frontend URL
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
+
 app.use(express.json());
 
 // File upload configuration with multer (for profile picture handling)
