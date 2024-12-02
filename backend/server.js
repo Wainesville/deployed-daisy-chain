@@ -11,19 +11,34 @@ console.log('Type of authenticate:', typeof authenticate);
 const app = express();
 const port = process.env.PORT || 5000;
 
-// Use CORS middleware
+// List of allowed origins
+const allowedOrigins = [
+  'https://frontend-70v5vmwct-steven-waines-projects.vercel.app',
+  'https://frontend-hcc1dvs37-steven-waines-projects.vercel.app'
+];
+
+// Use CORS middleware with dynamic origin
 app.use(cors({
-  origin: 'https://frontend-70v5vmwct-steven-waines-projects.vercel.app', // Replace with your frontend URL
+  origin: function (origin, callback) {
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   credentials: true,
 }));
 
 app.use(express.json());
 
+// Parse the service account key from the environment variable
+const serviceAccountKey = JSON.parse(process.env.GCLOUD_KEY);
+
 // Configure Google Cloud Storage
 const storage = new Storage({
   projectId: process.env.GCLOUD_PROJECT_ID,
-  keyFilename: process.env.GCLOUD_KEY_FILE, // Path to your service account key file
+  credentials: serviceAccountKey,
 });
 const bucket = storage.bucket(process.env.GCLOUD_BUCKET_NAME);
 
