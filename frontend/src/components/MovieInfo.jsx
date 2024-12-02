@@ -46,7 +46,7 @@ const MovieInfo = ({ id: propId, onClose }) => {
 
         const token = localStorage.getItem('token');
         if (token) {
-          const watchlistResponse = await axios.get(`http://localhost:5000/api/watchlist`, {
+          const watchlistResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/watchlist`, {
             headers: {
               Authorization: `Bearer ${token}`,
             },
@@ -113,7 +113,7 @@ const MovieInfo = ({ id: propId, onClose }) => {
 
       console.log('Sending recommendation data:', recommendationData);
 
-      await axios.post('http://localhost:5000/api/recommendations/add', recommendationData, {
+      await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/recommendations/add`, recommendationData, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

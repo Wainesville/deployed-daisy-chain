@@ -17,7 +17,7 @@ function Watchlist() {
           window.location.href = '/login'; // Redirect to login page
           return;
         }
-        const response = await axios.get('http://localhost:5000/api/watchlist', {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/watchlist`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -34,7 +34,7 @@ function Watchlist() {
   const handleRemove = async (movieId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.delete(`http://localhost:5000/api/watchlist/remove/${movieId}`, {
+      await axios.delete(`${import.meta.env.VITE_BACKEND_URL}/api/watchlist/remove/${movieId}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -48,7 +48,7 @@ function Watchlist() {
   const handleSetCurrentlyWatching = async (movieId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/watchlist/currently-watching/${movieId}`, {}, {
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/watchlist/currently-watching/${movieId}`, {}, {
         headers: {
           Authorization: `Bearer ${token}`,
         },
@@ -70,7 +70,7 @@ function Watchlist() {
   const handleSetNextUp = async (movieId) => {
     try {
       const token = localStorage.getItem('token');
-      await axios.put(`http://localhost:5000/api/watchlist/next-up/${movieId}`, {}, {
+      await axios.put(`${import.meta.env.VITE_BACKEND_URL}/api/watchlist/next-up/${movieId}`, {}, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

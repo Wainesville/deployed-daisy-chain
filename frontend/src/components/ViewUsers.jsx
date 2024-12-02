@@ -20,7 +20,7 @@ const ViewUsers = () => {
           window.location.href = '/login'; // Redirect to login page
           return;
         }
-        const response = await axios.get('http://localhost:5000/api/users/newest', {
+        const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users/newest`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -44,7 +44,7 @@ const ViewUsers = () => {
         window.location.href = '/login'; // Redirect to login page
         return;
       }
-      const response = await axios.get(`http://localhost:5000/api/users/search?query=${searchQuery}`, {
+      const response = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users/search?query=${searchQuery}`, {
         headers: {
           Authorization: `Bearer ${token}`,
         },

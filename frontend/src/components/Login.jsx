@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { loginUser } from '../api';
+import axios from 'axios';
 import './styles.css';
 import MovieCollage from './MovieCollage';
 
@@ -13,11 +13,14 @@ function Login({ handleLogin }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await loginUser({ username, password });
-      handleLogin(response);
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/login`, {
+        username,
+        password,
+      });
+      handleLogin(response.data);
       setUsername('');
       setPassword('');
-      navigate(`/user/${response.user.username}`);
+      navigate(`/user/${response.data.user.username}`);
     } catch (err) {
       setError('Login failed. Please check your credentials.');
     }

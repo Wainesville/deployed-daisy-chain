@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { registerUser } from '../api';
+import axios from 'axios';
 import './styles.css';
 import MovieCollage from './MovieCollage';
 
@@ -14,7 +14,11 @@ function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await registerUser({ username, email, password });
+      const response = await axios.post(`${import.meta.env.VITE_BACKEND_URL}/api/auth/register`, {
+        username,
+        email,
+        password,
+      });
       setUsername('');
       setEmail('');
       setPassword('');

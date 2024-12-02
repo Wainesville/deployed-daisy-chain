@@ -34,7 +34,7 @@ const ViewUserPage = () => {
           window.location.href = '/login'; // Redirect to login page
           return;
         }
-        const userResponse = await axios.get(`http://localhost:5000/api/users/${username}`, {
+        const userResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/users/${username}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
@@ -42,7 +42,7 @@ const ViewUserPage = () => {
         console.log('Fetched user data:', userResponse.data);
         setUser(userResponse.data);
 
-        const watchlistResponse = await axios.get(`http://localhost:5000/api/watchlist/${userResponse.data.id}`, {
+        const watchlistResponse = await axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/watchlist/${userResponse.data.id}`, {
           headers: {
             Authorization: `Bearer ${token}`,
           },
