@@ -1,0 +1,117 @@
+/* Watchlist Container */
+.watchlist {
+    padding: 20px;
+    padding-top: 60px; /* Add padding to the top to account for the header height */
+    background-color: #000000; /* Dark background color */
+    color: #ffffff; /* Light text color */
+    min-height: 100vh; /* Ensure the page takes up the full height of the viewport */
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align the content */
+  }
+  
+  /* Header */
+  .watchlist h2 {
+    font-family: 'Arial', sans-serif;
+    font-size: 2em; /* Larger font size */
+    color: #007bff; /* Primary color */
+    margin-bottom: 20px;
+  }
+  
+  /* Movie Grid */
+  .movie-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px; /* Space between movie cards */
+    width: 100%; /* Full width */
+    justify-content: center; /* Center align the movie cards */
+  }
+  
+  /* Movie Card */
+  .movie-card {
+    background-color: #292929; /* Dark background color for movie cards */
+    border-radius: 8px; /* Rounded corners */
+    overflow: hidden; /* Hide overflow */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+    transition: transform 0.3s; /* Animation for hover effect */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    text-align: center; /* Center align text */
+    position: relative; /* Add relative positioning for the rank label */
+    max-width: 200px; /* Set a max width for the movie cards */
+  }
+  
+  /* Movie Card Hover Effect */
+  .movie-card:hover {
+    transform: translateY(-5px); /* Lift effect */
+  }
+  
+  /* Movie Card Image */
+  .movie-card img {
+    width: 100%; /* Full width */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 4px; /* Rounded corners for images */
+    margin-bottom: 10px;
+  }
+  
+  /* Movie Title */
+  .movie-card h3 {
+    font-size: 1em; /* Normal font size */
+    color: #ffffff; /* Light text color */
+    margin-top: 10px; /* Add space between the title and the movie poster */
+    word-wrap: break-word; /* Ensure long titles wrap onto a second line */
+  }
+  
+  /* Remove Button */
+  .movie-card button {
+    background-color: #e74c3c; /* Red color */
+    color: white; /* White text */
+    border: none;
+    border-radius: 4px; /* Rounded corners */
+    padding: 8px; /* Padding inside */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+    margin: 10px; /* Space around button */
+  }
+  
+  /* Remove Button Hover Effect */
+  .movie-card button:hover {
+    background-color: #c0392b; /* Darker red on hover */
+  }
+  
+  /* Toggle Buttons */
+  .toggle-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Space between buttons */
+  }
+  
+  .toggle-button {
+    background-color: #007bff; /* Primary color */
+    color: white; /* White text */
+    border: none;
+    border-radius: 4px; /* Rounded corners */
+    padding: 8px; /* Padding inside */
+    cursor: pointer; /* Pointer on hover */
+    transition: background-color 0.3s; /* Smooth transition */
+  }
+  
+  .toggle-button.active {
+    background-color: #0056b3; /* Darker shade for active state */
+  }
+  
+  .toggle-button:hover {
+    background-color: #0056b3; /* Darker shade on hover */
+  }
+  
+  /* First Spot Movie Card */
+  .first-spot {
+    border: 3px solid #4caf50; /* Green border for first spot */
+  }
+  
+  /* Second Spot Movie Card */
+  .second-spot {
+    border: 3px solid #ff9800; /* Orange border for second spot */
+  }

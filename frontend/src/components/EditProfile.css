@@ -1,0 +1,195 @@
+.edit-profile {
+    padding: 40px;
+    background-color: #1c1c1c; /* Dark background color */
+    color: #ffffff; /* Light text color */
+    min-height: 100vh; /* Ensure the page takes up the full height of the viewport */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .form-container {
+    background-color: #2c2c2c; /* Slightly lighter dark background for the form container */
+    color: #ffffff; /* Light text color */
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+  }
+  
+  .edit-profile h2 {
+    margin-bottom: 20px;
+    font-size: 1.8em;
+    color: #007bff; /* Primary color for the heading */
+    text-align: center;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  .form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffffff; /* Light text color */
+  }
+  
+  .form-group input[type="text"],
+  .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #444; /* Darker border color */
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #333; /* Dark background color for inputs */
+    color: #ffffff; /* Light text color for inputs */
+  }
+  
+  .genres,
+  .movies {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  
+  .genres div,
+  .movies div {
+    display: flex;
+    align-items: center;
+  }
+  
+  .genres input,
+  .movies input {
+    margin-right: 5px;
+  }
+  
+  button[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff; /* Primary color for the button */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+    width: 100%;
+    margin-top: 20px;
+  }
+  
+  button[type="submit"]:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+  }
+  
+  .top-movie {
+    margin-bottom: 20px;
+  }
+  
+  .search-form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .search-form input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #444; /* Darker border color */
+    border-radius: 4px;
+    font-size: 1em;
+    background-color: #333; /* Dark background color for inputs */
+    color: #ffffff; /* Light text color for inputs */
+  }
+  
+  .search-form button {
+    padding: 10px 20px;
+    background-color: #007bff; /* Primary color for the button */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1em;
+  }
+  
+  .search-form button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+  }
+  
+  .search-results {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .search-result {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .search-result img {
+    width: 100px;
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 5px;
+  }
+  
+  .search-result button {
+    padding: 5px 10px;
+    background-color: #007bff; /* Primary color for the button */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  
+  .search-result button:hover {
+    background-color: #0056b3; /* Darker shade for hover effect */
+  }
+  
+  .selected-movie {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .selected-movie img {
+    width: 100px;
+    height: auto;
+    border-radius: 4px;
+  }
+  
+  .selected-movie span {
+    font-weight: bold;
+    color: #ffffff; /* Light text color */
+  }
+  
+  .selected-movie button {
+    padding: 5px 10px;
+    background-color: #ff5e57; /* Red color for the remove button */
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+  }
+  
+  .selected-movie button:hover {
+    background-color: #ff4a3d; /* Darker shade for hover effect */
+  }
+  
+  .profile-picture-preview {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+  }
+  
+  .profile-picture-preview img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 50%;
+    object-fit: cover;
+  }

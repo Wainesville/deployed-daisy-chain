@@ -1,0 +1,262 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  padding-top: 60px; /* Add padding to the top to account for the header height */
+  background-color: #000; /* Set the main background color to black */
+  color: #fff; /* Set the text color to white */
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Centering the form in the login and register pages */
+.login-page, .register-page {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full height of the viewport */
+  position: relative;
+}
+
+.form-container {
+  background-color: rgba(255, 255, 255, 0.8); /* White background with 80% opacity */
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  width: 100%; /* Ensure the form container takes up the full width up to max-width */
+  z-index: 1; /* Ensure the form is above the collage */
+  position: relative; /* Ensure proper stacking context */
+  margin: auto; /* Center the form horizontally */
+}
+
+/* Movie Collage */
+.movie-collage {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  width: 100%;
+  height: 100vh; /* Ensure the collage takes up the full height of the viewport */
+  position: fixed; /* Use fixed positioning to cover the entire viewport */
+  top: 0;
+  left: 0;
+  z-index: 0; /* Ensure the collage is behind other content */
+}
+
+.movie-collage img {
+  width: 10%; /* Adjust the width to make the images smaller */
+  height: auto;
+  border-radius: 4px;
+  object-fit: cover;
+  margin: 0; /* Remove margin to eliminate space between images */
+}
+
+.user-page {
+  background-color: black; /* Set background to black */
+  color: white; /* Set text color to white */
+  min-height: 100vh; /* Ensure it fills the viewport */
+  width: 100vw; /* Ensure it fills the viewport width */
+  padding: 20px; /* Add some padding */
+  position: absolute; /* Ensure it covers the entire screen */
+  top: 0;
+  left: 0;
+}
+
+.user-content {
+  background-color: black; /* Ensure the user content has a black background */
+  color: white; /* Set text color to white */
+  padding: 20px; /* Add some padding */
+}
+
+.movie-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; /* Space between movie cards */
+  width: 100%; /* Full width */
+  justify-content: center; /* Center align the movie cards */
+}
+
+.movie-card {
+  background-color: #292929; /* Dark background color for movie cards */
+  border-radius: 8px; /* Rounded corners */
+  overflow: hidden; /* Hide overflow */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: transform 0.3s; /* Animation for hover effect */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  text-align: center; /* Center align text */
+  position: relative; /* Add relative positioning for the rank label */
+  max-width: 200px; /* Set a max width for the movie cards */
+}
+
+.movie-card:hover {
+  transform: translateY(-5px); /* Lift effect */
+}
+
+.movie-card img {
+  width: 100%; /* Full width */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 4px; /* Rounded corners for images */
+  margin-bottom: 10px;
+}
+
+.movie-card h3 {
+  font-size: 1em; /* Normal font size */
+  color: #ffffff; /* Light text color */
+  margin-top: 10px; /* Add space between the title and the movie poster */
+  word-wrap: break-word; /* Ensure long titles wrap onto a second line */
+}
+
+.movie-card button {
+  background-color: #e74c3c; /* Red color */
+  color: white; /* White text */
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px; /* Padding inside */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+  margin: 10px; /* Space around button */
+}
+
+.movie-card button:hover {
+  background-color: #c0392b; /* Darker red on hover */
+}
+
+.toggle-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* Space between buttons */
+}
+
+.toggle-button {
+  background-color: #007bff; /* Primary color */
+  color: white; /* White text */
+  border: none;
+  border-radius: 4px; /* Rounded corners */
+  padding: 8px; /* Padding inside */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s; /* Smooth transition */
+}
+
+.toggle-button.active {
+  background-color: #0056b3; /* Darker shade for active state */
+}
+
+.toggle-button:hover {
+  background-color: #0056b3; /* Darker shade on hover */
+}
+
+.first-spot {
+  border: 3px solid #4caf50; /* Green border for first spot */
+}
+
+.second-spot {
+  border: 3px solid #ff9800; /* Orange border for second spot */
+}
+
+.review-card {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.review-card h3 {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  color: #007bff;
+}
+
+.review-card p {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.review-card p:last-child {
+  margin-bottom: 0;
+}
+
+.recommendation-card {
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 10px;
+}
+
+.recommendation-card h3 {
+  margin-bottom: 5px;
+  font-size: 1.2em;
+  color: #007bff;
+}
+
+.recommendation-card p {
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.recommendation-card p:last-child {
+  margin-bottom: 0;
+}
+
+.recommendation-card a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.recommendation-card a:hover {
+  text-decoration: underline;
+}
+
+.browse-page {
+  padding: 20px;
+  background-color: black; /* Set background to black */
+  color: white; /* Set text color to white */
+  min-height: 100vh; /* Ensure it fills the viewport */
+}
+
+.browse-page h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.browse-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.genre-button {
+  background-color: #ff5e57;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.genre-button:hover {
+  background-color: #ff4a3d; /* Darker shade on hover */
+}

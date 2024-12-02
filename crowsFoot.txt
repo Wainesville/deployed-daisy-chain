@@ -1,0 +1,62 @@
++-------------------+       +-------------------+       +-------------------+
+|      Users        |       |      Movies       |       | Recommendations   |
++-------------------+       +-------------------+       +-------------------+
+| PK  id            |<------| PK  id            |       | PK  id            |
+|     username      |       |     title         |       | FK  user_id       |
+|     password      |       |     thumbnail     |       |     title         |
+|     email         |       +-------------------+       |     content       |
+|     bio           |                                   |     created_at    |
+|     profile_pic   |                                   |     movie_id      |
+|     visibility    |                                   |     recommended_by|
+|     genres        |                                   |     recommended_to|
+|     top_movies    |                                   |     movie_title   |
+|     recommendations|                                   +-------------------+
+|     created_at    |
++-------------------+
+        | 1
+        |
+        | 0..*
+        |
++-------------------+
+|    Watchlist      |
++-------------------+
+| FK  user_id       |
+| FK  movie_id      |
++-------------------+
+
+
+
+Tables and Relationships
+
+Users Table
+
+Primary Key: id
+Attributes: username, password, email, bio, profile_picture, profile_visibility, favorite_genres, top_movies, recommendations, created_at
+Unique Constraints: email, username
+Referenced By:
+recommendations (Foreign Key: user_id)
+watchlist (Foreign Key: user_id)
+
+
+Movies Table
+
+Primary Key: id
+Attributes: title, thumbnail
+Referenced By:
+watchlist (Foreign Key: movie_id)
+
+
+Recommendations Table
+
+Primary Key: id
+Attributes: user_id, title, content, created_at, movie_id, recommended_by, recommended_to, movie_title
+Foreign Key Constraints:
+user_id references users(id)
+
+
+Watchlist Table
+
+Attributes: user_id, movie_id
+Foreign Key Constraints:
+user_id references users(id)
+movie_id references movies(id)
