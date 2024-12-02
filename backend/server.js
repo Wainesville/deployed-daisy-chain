@@ -1,10 +1,12 @@
 const express = require('express');
 const cors = require('cors');
-const multer = require('multer'); // Middleware for handling file uploads
+const { Storage } = require('@google-cloud/storage');
+const multer = require('multer');
+const { format } = require('util');
 const authenticate = require('./middleware/authenticate'); // Adjust path if needed
 require('dotenv').config();
 
-console.log('Type of authenticate:', typeof authenticate); // Add this line
+console.log('Type of authenticate:', typeof authenticate);
 
 const app = express();
 const port = process.env.PORT || 5000;
@@ -18,8 +20,42 @@ app.use(cors({
 
 app.use(express.json());
 
-// File upload configuration with multer (for profile picture handling)
-const upload = multer({ dest: 'uploads/' }); // You can customize this path
+// Configure Google Cloud Storage
+const storage = new Storage({
+  projectId: process.env.GCLOUD_PROJECT_ID,
+  keyFilename: process.env.GCLOUD_KEY_FILE, // Path to your service account key file
+});
+const bucket = storage.bucket(process.env.GCLOUD_BUCKET_NAME);
+
+// Configure multer to use Google Cloud Storage for storage
+const upload = multer({
+  storage: multer.memoryStorage(),
+});
+
+app.post('/upload', upload.single('file'), (req, res) => {
+  if (!req.file) {
+    return res.status(400).send('No file uploaded.');
+  }
+
+  const blob = bucket.file(Date.now().toString() + '-' + req.file.originalname);
+  const blobStream = blob.createWriteStream({
+    resumable: false,
+    contentType: req.file.mimetype,
+    predefinedAcl: 'publicRead',
+  });
+
+  blobStream.on('error', (err) => {
+    console.error('Blob stream error:', err);
+    res.status(500).send({ error: 'Failed to upload file.' });
+  });
+
+  blobStream.on('finish', () => {
+    const publicUrl = format(`https://storage.googleapis.com/${bucket.name}/${blob.name}`);
+    res.status(200).send({ fileUrl: publicUrl });
+  });
+
+  blobStream.end(req.file.buffer);
+});
 
 // Import Routes
 const authRoutes = require('./routes/auth');
