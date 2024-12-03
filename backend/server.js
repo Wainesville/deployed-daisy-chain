@@ -1,26 +1,39 @@
 const express = require('express');
 const cors = require('cors');
+const helmet = require('helmet');
 const { Storage } = require('@google-cloud/storage');
 const multer = require('multer');
 const { format } = require('util');
 const authenticate = require('./middleware/authenticate'); // Adjust path if needed
 require('dotenv').config();
 
-console.log('Type of authenticate:', typeof authenticate);
-
 const app = express();
 const port = process.env.PORT || 5000;
 
-// List of allowed origins
 const allowedOrigins = [
   'https://frontend-ciagacfte-steven-waines-projects.vercel.app',
-  'https://frontend-hcc1dvs37-steven-waines-projects.vercel.app'
+  'https://frontend-two-amber-88.vercel.app',
+  'http://localhost:3000', // For local testing
 ];
+
+// Use Helmet to set security-related HTTP headers
+app.use(helmet({
+  contentSecurityPolicy: {
+    directives: {
+      defaultSrc: ["'self'"],
+      scriptSrc: ["'self'", "https://vercel.live"],
+      connectSrc: ["'self'", "https://vercel.live"],
+      imgSrc: ["'self'", "data:"],
+      styleSrc: ["'self'", "'unsafe-inline'"],
+      fontSrc: ["'self'", "https://fonts.gstatic.com"],
+    },
+  },
+}));
 
 // Use CORS middleware with dynamic origin
 app.use(cors({
   origin: function (origin, callback) {
-    if (allowedOrigins.includes(origin)) {
+    if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
@@ -30,6 +43,7 @@ app.use(cors({
   credentials: true,
 }));
 
+app.options('*', cors()); // Handle preflight requests
 app.use(express.json());
 
 // Parse the service account key from the environment variable
